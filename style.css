@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* change height to min-height */
+    background: rgb(247, 255, 255);
+    background-size: cover; /* fixed typo */
+    background-attachment: fixed;
+}
+
+.container {
+    margin-top: 00px; /* Adjust margin as needed */
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+}
+.header_container_Center{
+    text-align: center;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+h1, h2, h3 {
+    margin: 10px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+label, input, button {
+    margin: 5px 0;
+    width: 100%;
+}
+.button-container {
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+}
+
+button {
+    align-self: center;
+    padding: 10px 20px;
+    background-color: #00A300;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.button_right{
+    margin-left: 20px;
+   
+}
+.button_color{
+    background-color: #FF0000;
+}
+
+.toggle-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.toggle-container input[type="radio"] {
+    display: none;
+}
+
+.toggle-container label {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: white;
+    background-color: #ccc;
+    border-radius: 30px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-container input[type="radio"]:checked + label {
+    background-color: #FFA500;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 30px;
+    transition: 0.3s ease;
+    z-index: -1;
+}

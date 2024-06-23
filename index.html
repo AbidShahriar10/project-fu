@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cover Page Generator for FU</title>
+    <link
+      href="//cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header_container_Center">
+        <img src="/image/fu.png" id="logo" alt="University Logo" class="logo" />
+        <h1>Feni University</h1>
+        <!-- <h2>Department of Computer Science and Engineering</h2>
+        <h3>Faculty of Science and Engineering</h3> -->
+      </div>
+
+      <div class="toggle-container">
+        <input
+          type="radio"
+          id="assignment"
+          name="toggle"
+          value="assignment"
+          checked
+        />
+        <label for="assignment">Assignment</label>
+        <input type="radio" id="labReport" name="toggle" value="labReport" />
+        <label for="labReport">Lab Report</label>
+        <div class="slider"></div>
+      </div>
+
+      <form id="pdf-form">
+
+
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <select 
+
+                id="department"
+                name="department"
+                class = "form-control"
+                required
+
+            >
+            <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+            </optgroup>
+            <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+            </optgroup>
+            <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+            </optgroup>
+        
+        </select>
+        </div>
+
+        <label for="semester">Semester:</label>
+        <input
+          type="text"
+          id="semester"
+          name="semester"
+          placeholder="Ex: Spring"
+          class = "form-control"
+          required
+        /><br />
+
+        <label for="year">Year:</label>
+        <input
+          list="years"
+          id="year"
+          name="year"
+          placeholder="Ex: 1st"
+          class = "form-control"
+          required
+        />
+        <datalist id="years">
+          <option value="1st"></option>
+          <option value="2nd"></option>
+          <option value="3rd"></option>
+          <option value="4th"></option></datalist
+        ><br />
+
+        <label for="section">Section:</label>
+        <input
+          list="sections"
+          id="section"
+          name="section"
+          placeholder="Ex: UG for Undergraduate or DH for Diploma Holder"
+          class = "form-control"
+          required
+        />
+        <datalist id="sections">
+          <option value="UG"></option>
+          <option value="DH"></option></datalist
+        ><br />
+
+        <label for="topic" id="topicLabel">Topic:</label>
+        <input
+          type="text"
+          id="topic"
+          name="topic"
+          placeholder="Enter Topic"
+          class = "form-control"
+          required
+        /><br />
+
+        <label for="courseTitle">Course Title:</label>
+        <input
+          type="text"
+          name="courseTitle"
+          placeholder="Enter your Course Title"
+          id="courseTitle"
+          class = "form-control"
+          required
+        /><br />
+
+        <label for="courseCode">Course Code:</label>
+        <input
+          type="text"
+          name="courseCode"
+          placeholder="Enter your Course Code"
+          id="courseCode"
+          class = "form-control"
+          required
+        /><br />
+
+        <div id="labReportNoContainer" style="display: none">
+          <label for="labReportNo">Lab Report No:</label>
+          <input type="text" id="labReportNo" name="labReportNo" class = "form-control" /><br />
+        </div>
+
+        <div id="labDateContainer" style="display: none">
+          <label for="labDate">Lab Date:</label>
+          <input type="date" id="labDate" name="labDate" class = "form-control" /><br />
+        </div>
+
+        <label for="name">Student Name:</label>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          id="name"
+          name="name"
+          class = "form-control"
+          required
+        /><br />
+
+        <label for="id">Student ID:</label>
+        <input
+          type="text"
+          placeholder="Enter your ID"
+          id="id"
+          name="id"
+          class = "form-control"
+          required
+        /><br />
+
+        <label for="date">Submission Date:</label>
+        <input type="date" id="date" name="date" required class = "form-control"/><br />
+
+        <label for="teacher">Course Teacher's Name:</label>
+        <input
+          type="text"
+          placeholder="Enter your Course Teacher Name"
+          id="teacher"
+          name="teacher"
+          class = "form-control"
+          required
+        /><br />
+
+        <div class="button-container">
+          <button type="submit">Generate PDF</button>
+          <button type="reset" class="button_right button_color">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
