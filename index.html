@@ -1,181 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cover Page Generator for FU</title>
-    <link
-      href="//cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="header_container_Center">
-        <img src="/image/fu.png" id="logo" alt="University Logo" class="logo" />
-        <h1>Feni University</h1>
-        <!-- <h2>Department of Computer Science and Engineering</h2>
-        <h3>Faculty of Science and Engineering</h3> -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cover Page Generator | Feni University</title>
+  <link href="//cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="shortcut icon" href="./image/fu.png" type="image/x-icon">
+
+  <style>
+    .watermark {
+      position: relative;
+    }
+
+    .watermark::after {
+      content: '';
+      background: url(./image/fu.png) center center no-repeat;
+      opacity: 0.1;
+      width: 300px;
+      height: 300px;
+      background-size: 300px 300px;
+      position: absolute;
+      top: calc(50% - 150px);
+      left: calc(50% - 150px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-white container-fluid d-flex">
+    <div class="px-5 py-3" style="width: 50%;">
+      <div class="text-center">
+        <img src="./image/fu.png" id="logo" alt="University Logo" class="logo" />
+        <h1 class="" style="color:black; font-weight: bold;;">Feni University</h1>
+        <h6><i>Center for Learning & Development</i></h2>
+          <br />
+          <h4>Cover Page Generator</h3>
+            <hr>
       </div>
 
-      <div class="toggle-container">
-        <input
-          type="radio"
-          id="assignment"
-          name="toggle"
-          value="assignment"
-          checked
-        />
+      <div class="toggle-container text-center">
+        <input type="radio" id="assignment" name="toggle" value="Assignment" checked />
         <label for="assignment">Assignment</label>
-        <input type="radio" id="labReport" name="toggle" value="labReport" />
+        <input type="radio" id="labReport" name="toggle" value="Lab Report" />
         <label for="labReport">Lab Report</label>
         <div class="slider"></div>
       </div>
 
-      <form id="pdf-form">
-
-
-        <div class="form-group">
-            <label for="department">Department:</label>
-            <select 
-
-                id="department"
-                name="department"
-                class = "form-control"
-                required
-
-            >
+      <form class="row" id="pdf-form">
+        <div class="form-group mb-2">
+          <label for="department">Department:</label>
+          <select id="department" name="department" class="form-control form-control-sm" required>
+            <option value="" disabled selected>Choose your department</option>
             <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
+              <option value="CSE">CSE</option>
+              <option value="EEE">EEE</option>
+              <option value="Civil">Civil</option>
             </optgroup>
             <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
+              <option value="CSE">CSE</option>
+              <option value="EEE">EEE</option>
+              <option value="Civil">Civil</option>
             </optgroup>
             <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
+              <option value="CSE">CSE</option>
+              <option value="EEE">EEE</option>
+              <option value="Civil">Civil</option>
             </optgroup>
-        
-        </select>
+
+          </select>
         </div>
 
-        <label for="semester">Semester:</label>
-        <input
-          type="text"
-          id="semester"
-          name="semester"
-          placeholder="Ex: Spring"
-          class = "form-control"
-          required
-        /><br />
+        <div class="form-group mb-2">
+          <label for="term">Term:</label>
+          <select type="text" id="term" name="term" placeholder="Ex: Spring" class="form-control form-control-sm"
+            required>
+            <option value="" disabled selected>Choose...</option>
+            <optgroup label="Bi-Semester">
+              <option>Spring</option>
+              <option>Autumn</option>
+            </optgroup>
+            <optgroup label="Tri-Semester">
+              <option>Spring</option>
+              <option>Summer</option>
+              <option>Fall</option>
+            </optgroup>
 
-        <label for="year">Year:</label>
-        <input
-          list="years"
-          id="year"
-          name="year"
-          placeholder="Ex: 1st"
-          class = "form-control"
-          required
-        />
-        <datalist id="years">
-          <option value="1st"></option>
-          <option value="2nd"></option>
-          <option value="3rd"></option>
-          <option value="4th"></option></datalist
-        ><br />
 
-        <label for="section">Section:</label>
-        <input
-          list="sections"
-          id="section"
-          name="section"
-          placeholder="Ex: UG for Undergraduate or DH for Diploma Holder"
-          class = "form-control"
-          required
-        />
-        <datalist id="sections">
-          <option value="UG"></option>
-          <option value="DH"></option></datalist
-        ><br />
-
-        <label for="topic" id="topicLabel">Topic:</label>
-        <input
-          type="text"
-          id="topic"
-          name="topic"
-          placeholder="Enter Topic"
-          class = "form-control"
-          required
-        /><br />
-
-        <label for="courseTitle">Course Title:</label>
-        <input
-          type="text"
-          name="courseTitle"
-          placeholder="Enter your Course Title"
-          id="courseTitle"
-          class = "form-control"
-          required
-        /><br />
-
-        <label for="courseCode">Course Code:</label>
-        <input
-          type="text"
-          name="courseCode"
-          placeholder="Enter your Course Code"
-          id="courseCode"
-          class = "form-control"
-          required
-        /><br />
-
-        <div id="labReportNoContainer" style="display: none">
-          <label for="labReportNo">Lab Report No:</label>
-          <input type="text" id="labReportNo" name="labReportNo" class = "form-control" /><br />
+          </select>
         </div>
 
-        <div id="labDateContainer" style="display: none">
+
+        <div class="form-group mb-2">
+          <label for="semester">Semester:</label>
+          <select list="semesters" id="semester" name="semester" placeholder="Ex: 1st"
+            class="form-control form-control-sm" required>
+            <option value="" disabled selected>Choose...</option>
+
+            <optgroup label="Bi-Semester">
+              <option value="1st">1st</option>
+              <option value="2nd">2nd</option>
+              <option value="3rd">3rd</option>
+              <option value="4th">4th</option>
+              <option value="5th">5th</option>
+              <option value="6th">6th</option>
+              <option value="7th">7th</option>
+              <option value="8th">8th</option>
+            </optgroup>
+
+            <optgroup label="Tri-Semester">
+              <option value="1st">1st</option>
+              <option value="2nd">2nd</option>
+              <option value="3rd">3rd</option>
+              <option value="4th">4th</option>
+              <option value="5th">5th</option>
+              <option value="6th">6th</option>
+              <option value="7th">7th</option>
+              <option value="8th">8th</option>
+              <option value="9th">9th</option>
+              <option value="10th">10th</option>
+              <option value="11th">11th</option>
+              <option value="12th">12th</option>
+            </optgroup>
+
+          </select>
+
+
+        </div>
+
+        <div class="form-group mb-2">
+          <label for="section">Section:</label>
+          <input list="sections" id="section" name="section"
+            placeholder="Ex: UG for Undergraduate or DH for Diploma Holder" class="form-control form-control-sm"
+            required />
+          <datalist id="sections">
+            <option value="UG"></option>
+            <option value="DH"></option>
+          </datalist>
+        </div>
+
+
+        <div class="form-group mb-2">
+          <label for="courseTitle">Course Title:</label>
+          <input type="text" name="courseTitle" placeholder="Enter your Course Title" id="courseTitle"
+            class="form-control form-control-sm" required />
+        </div>
+
+        <div class="form-group mb-2">
+          <label for="courseCode">Course Code:</label>
+          <input type="text" name="courseCode" placeholder="Enter your Course Code" id="courseCode"
+            class="form-control form-control-sm" required />
+        </div>
+
+        <div class="form-group mb-2">
+          <label id="labReportNoLabel" for="labReportNoLabel">Lab Report No:</label>
+          <input type="text" id="labReportNoInput" name="labReportNo" class="form-control form-control-sm" />
+        </div>
+
+        <div class="form-group mb-2">
+          <label for="topic" id="topicLabel">Topic:</label>
+          <input type="text" id="topic" name="topic" placeholder="Enter Topic" class="form-control form-control-sm"
+            required />
+        </div>
+
+        <!-- <div class="form-group mb-2" id="labDateContainer" style="display: none">
           <label for="labDate">Lab Date:</label>
-          <input type="date" id="labDate" name="labDate" class = "form-control" /><br />
+          <input type="date" id="labDate" name="labDate" class="form-control form-control-sm" />
+        </div> -->
+
+        <div class="h4">
+          Submitted By
+        </div>
+        <div class="form-group mb-2">
+          <label for="name">Student Name:</label>
+          <input type="text" placeholder="Enter your name" id="name" name="name" class="form-control form-control-sm"
+            required />
+
+        </div>
+        <div class="form-group mb-2">
+          <label for="id">Student ID:</label>
+          <input type="text" placeholder="Enter your ID" id="id" name="id" class="form-control form-control-sm"
+            required />
+
+        </div>
+        <div class="form-group mb-2">
+          <label for="date">Submission Date:</label>
+          <input type="date" id="date" name="date" required class="form-control form-control-sm" />
         </div>
 
-        <label for="name">Student Name:</label>
-        <input
-          type="text"
-          placeholder="Enter your name"
-          id="name"
-          name="name"
-          class = "form-control"
-          required
-        /><br />
+        <div class="h4">
+          Submitted To
+        </div>
 
-        <label for="id">Student ID:</label>
-        <input
-          type="text"
-          placeholder="Enter your ID"
-          id="id"
-          name="id"
-          class = "form-control"
-          required
-        /><br />
+        <div class="form-group mb-2">
+          <label for="teacher">Teacher's Name:</label>
+          <input type="text" placeholder="Enter your Course Teacher Name" id="teacher" name="teacher"
+            class="form-control form-control-sm" required />
+        </div>
 
-        <label for="date">Submission Date:</label>
-        <input type="date" id="date" name="date" required class = "form-control"/><br />
+        <div class="form-group mb-2">
+          <label for="designation">Designation:</label>
+          <input type="text" placeholder="Enter your Course Teacher Name" id="teacher" name="teacher"
+            class="form-control form-control-sm" required />
+        </div>
 
-        <label for="teacher">Course Teacher's Name:</label>
-        <input
-          type="text"
-          placeholder="Enter your Course Teacher Name"
-          id="teacher"
-          name="teacher"
-          class = "form-control"
-          required
-        /><br />
+        <div class="form-group mb-2">
+          <label for="teacher_department">Department:</label>
+          <select id="teacher_department" name="teacher_department" class="form-control form-control-sm" required>
+            <option value="" disabled selected>Choose your department</option>
+            <optgroup label="Faculty of Science & Engineering">
+              <option value="CSE">CSE</option>
+              <option value="EEE">EEE</option>
+              <option value="Civil">Civil</option>
+            </optgroup>
+            <optgroup label="Faculty of Science & Engineering">
+              <option value="CSE">CSE</option>
+              <option value="EEE">EEE</option>
+              <option value="Civil">Civil</option>
+            </optgroup>
+            <optgroup label="Faculty of Science & Engineering">
+              <option value="CSE">CSE</option>
+              <option value="EEE">EEE</option>
+              <option value="Civil">Civil</option>
+            </optgroup>
+          </select>
+        </div>
 
         <div class="button-container">
           <button type="submit">Generate PDF</button>
@@ -184,8 +235,52 @@
       </form>
     </div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+    <div class="border-left border-start pt-3" style="width: 50%">
+      <div style="width: 210mm; height: 297mm; border: 1px solid red; padding: 10mm 2mm;" class="watermark">
+
+        <div class="flex flex-col text-center justify-between">
+          <div class="flex-col justify-center w-full flex mx-auto items-center ">
+            <div class="w-full text-center mt-10 ">
+              <h2 class="text-3xl text-blue-900 text-center">Noakhali Science &amp; Technology University</h2>
+              <p class="text-xl">Noakhali-3814,Bangladesh</p>
+            </div><img src="./image/fu.png" alt="FU" style="width: 120px;">
+          </div>
+          <div class="text-2xl text-center">
+            <h1 class="text-3xl font-bold my-5">Assignment </h1>
+            <h2 class="mb-2"><span class="text-blue-900">Course Title :</span></h2>
+            <h2><span class="text-blue-900">Course Code :</span> </h2>
+          </div>
+          <div class="mt-3 text-center p-1">
+            <div class="my-5">
+              <h2 class="text-blue-900 text-xl uppercase">Prepared to</h2>
+              <h3 class="text-2xl"></h3>
+              <h4 class="text-xl"></h4>
+              <h4>Department of </h4>
+              <h4>Noakhali Science &amp; Technology University</h4>
+            </div>
+            <div class="my-5">
+              <h2 class="text-blue-900 uppercase text-xl">Prepared by</h2>
+              <h3 class="text-2xl"></h3>
+              <h4 class="text-xl">Roll : </h4>
+              <h4>Year: Term: </h4>
+              <h4></h4>
+            </div>
+          </div>
+          <div class="text-center mt-10 mb-1">
+            <h2 class="text-2xl my-2 text-blue-900 text-center">Submision Date : </h2>
+            <h1>Dept of </h1>
+            <h1 class="text-2xl my-2">Faculty of </h1>
+            <h4>Noakhali Science &amp; Technology University</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
