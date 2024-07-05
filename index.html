@@ -5,25 +5,381 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cover Page Generator | Feni University</title>
+
+  <link href="//cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
   <link rel="stylesheet" href="style.css" />
 
   <link rel="shortcut icon" href="./image/fu.png" type="image/x-icon">
+
+  <style>
+    body {
+      /* height: 100vh;
+      width: 100vw; */
+    }
+
+    #logo {
+      width: 65px;
+    }
+  </style>
+  <style>
+    .watermark {
+      position: relative;
+    }
+
+    .watermark::after {
+      content: '';
+      background: url(./image/fu.png) center center no-repeat;
+      opacity: 0.1;
+      width: 300px;
+      height: 300px;
+      background-size: 300px 300px;
+      position: absolute;
+      top: calc(50% - 150px);
+      left: calc(50% - 150px);
+    }
+
+    table td,
+    th {
+      padding: 5px;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="bg-white container-fluid d-flex">
-    <div class="px-5 py-3" style="width: 50%; height: 100%">
+  <div class="row">
 
-      <iframe width="100%" height="100%" style="height: 1000px; border:0px solid black;"
-        title="W3Schools Free Online Web Tutorials" src="formpage.html">
+    <div class="bg-white col-12 col-lg-5">
+      <form class="" id="pdf-form">
+        <div class="px-5 py-3">
 
-      </iframe>
+          <div class="text-center d-flex justify-content-center">
+            <div>
+              <img src="./image/fu.png" id="logo" alt="University Logo" class="logo" />
+            </div>
+            <div class="ms-2">
+              <h1 class="my-0 py-0 text-start text-uppercase" style="color:black; font-weight: bold;;">Feni University
+              </h1>
+
+              <p class="text-start " style="font-style: italic;">Center for Learning & Development</p>
+            </div>
+          </div>
+
+          <h4 class="text-center">Cover Page Generator</h4>
+
+          <hr>
+
+          <div class="toggle-container text-center">
+            <input type="radio" id="assignment" name="toggle" value="Assignment" checked />
+            <label for="assignment">Assignment</label>
+            <input type="radio" id="labReport" name="toggle" value="Lab Report" />
+            <label for="labReport">Lab Report</label>
+            <div class="slider"></div>
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="department">Department:</label>
+            <select id="department" name="department" class="form-control form-control-sm" required>
+              <option value="" disabled selected>Choose your department</option>
+              <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+              </optgroup>
+              <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+              </optgroup>
+              <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+              </optgroup>
+
+            </select>
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="term">Term:</label>
+            <select type="text" id="term" name="term" placeholder="Ex: Spring" class="form-control form-control-sm"
+              required>
+              <option value="" disabled selected>Choose...</option>
+              <optgroup label="Bi-Semester">
+                <option>Spring</option>
+                <option>Autumn</option>
+              </optgroup>
+              <optgroup label="Tri-Semester">
+                <option>Spring</option>
+                <option>Summer</option>
+                <option>Fall</option>
+              </optgroup>
 
 
+            </select>
+          </div>
+
+
+          <div class="form-group mb-2">
+            <label for="semester">Semester:</label>
+            <select list="semesters" id="semester" name="semester" placeholder="Ex: 1st"
+              class="form-control form-control-sm" required>
+              <option value="" disabled selected>Choose...</option>
+
+              <optgroup label="Bi-Semester">
+                <option value="1st">1st</option>
+                <option value="2nd">2nd</option>
+                <option value="3rd">3rd</option>
+                <option value="4th">4th</option>
+                <option value="5th">5th</option>
+                <option value="6th">6th</option>
+                <option value="7th">7th</option>
+                <option value="8th">8th</option>
+              </optgroup>
+
+              <optgroup label="Tri-Semester">
+                <option value="1st">1st</option>
+                <option value="2nd">2nd</option>
+                <option value="3rd">3rd</option>
+                <option value="4th">4th</option>
+                <option value="5th">5th</option>
+                <option value="6th">6th</option>
+                <option value="7th">7th</option>
+                <option value="8th">8th</option>
+                <option value="9th">9th</option>
+                <option value="10th">10th</option>
+                <option value="11th">11th</option>
+                <option value="12th">12th</option>
+              </optgroup>
+
+            </select>
+
+
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="section">Section:</label>
+            <input list="sections" id="section" name="section"
+              placeholder="Ex: UG for Undergraduate or DH for Diploma Holder" class="form-control form-control-sm"
+              required />
+            <datalist id="sections">
+              <option value="UG"></option>
+              <option value="DH"></option>
+            </datalist>
+          </div>
+
+
+          <div class="form-group mb-2">
+            <label for="courseTitle">Course Title:</label>
+            <input type="text" name="courseTitle" placeholder="Enter your Course Title" id="courseTitle"
+              class="form-control form-control-sm" required />
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="courseCode">Course Code:</label>
+            <input type="text" name="courseCode" placeholder="Enter your Course Code" id="courseCode"
+              class="form-control form-control-sm" required />
+          </div>
+
+          <div class="form-group mb-2">
+            <label id="labReportNoLabel" for="labReportNoLabel">Lab Report No:</label>
+            <input type="text" id="labReportNoInput" name="labReportNo" class="form-control form-control-sm" />
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="topic" id="topicLabel">Topic:</label>
+            <input type="text" id="topic" name="topic" placeholder="Enter Topic" class="form-control form-control-sm"
+              required />
+          </div>
+
+          <!-- <div class="form-group mb-2" id="labDateContainer" style="display: none">
+          <label for="labDate">Lab Date:</label>
+          <input type="date" id="labDate" name="labDate" class="form-control form-control-sm" />
+          </div> -->
+
+          <div class="h4">
+            Submitted By
+          </div>
+          <div class="form-group mb-2">
+            <label for="name">Student Name:</label>
+            <input type="text" placeholder="Enter your name" id="name" name="name" class="form-control form-control-sm"
+              required />
+
+          </div>
+          <div class="form-group mb-2">
+            <label for="id">Student ID:</label>
+            <input type="text" placeholder="Enter your ID" id="id" name="id" class="form-control form-control-sm"
+              required />
+
+          </div>
+          <div class="form-group mb-2">
+            <label for="date">Submission Date:</label>
+            <input type="date" id="date" name="date" required class="form-control form-control-sm" />
+          </div>
+
+          <div class="h4">
+            Submitted To
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="teacher">Teacher's Name:</label>
+            <input type="text" placeholder="Enter your Course Teacher Name" id="teacher" name="teacher"
+              class="form-control form-control-sm" required />
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="designation">Designation:</label>
+            <input type="text" placeholder="Enter your Course Teacher Name" id="teacher" name="teacher"
+              class="form-control form-control-sm" required />
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="teacher_department">Department:</label>
+            <select id="teacher_department" name="teacher_department" class="form-control form-control-sm" required>
+              <option value="" disabled selected>Choose your department</option>
+              <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+              </optgroup>
+              <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+              </optgroup>
+              <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="button-container">
+            <button type="submit">Generate PDF</button>
+            <button type="reset" class="button_right button_color">Reset</button>
+          </div>
+        </div>
+      </form>
     </div>
 
-    <div class="border-left border-start pt-3" style="width: 50%">
+    <div class="bg-white col-12 col-lg-6 bg-white">
+      <div style="width: 210mm; height: 297mm; border: 1px solid red; padding: 5mm 12mm;"
+        class="watermark d-flex justify-content-between flex-column">
 
+        <div class="text-center d-flex justify-content-center">
+          <div>
+            <img src="./image/fu.png" id="logo" alt="University Logo" class="logo" />
+          </div>
+          <div class="ms-2">
+            <h1 class="my-0 py-0 text-start text-uppercase" style="color:black; font-weight: bold;;">Feni University
+            </h1>
+
+            <p class="text-start " style="font-style: italic;">Center for Learning & Development</p>
+          </div>
+        </div>
+
+
+
+
+        <div class="text-2xl text-center">
+          <h1 class="text-3xl font-bold my-5"></h1>
+          <h2 class="mb-2"><span class="text-blue-900">Assignment No:</span> <span
+              class="assignment_no ml-2">#####</span>
+          </h2>
+          <h2><span>Topic:</span> <span class="topic ml-2">#####</span></h2>
+        </div>
+
+        <div class="table-responsive bg-transparent">
+          <table class="bottom-0 left-0 right-0 w-100 table-bordered bg-transparent">
+            <tbody>
+              <tr>
+                <td style="width: 25%;min-width: 25%; max-width: 25%;">Course Title</td>
+                <td class="text-center" style="width: 5%;min-width: 5%; max-width: 5%;">:</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td style="width: 25%;min-width: 25%; max-width: 25%;">Course Code</td>
+                <td class="text-center" style="width: 5%;min-width: 5%; max-width: 5%;">:</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+
+        <div class="table-responsive bg-transparent">
+          <table class="bottom-0 left-0 right-0 w-100 table-bordered bg-transparent">
+            <thead>
+              <tr class="text-center">
+                <th colspan="2">Submitted To</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="width: 15%;min-width: 15%; max-width: 15%;">Teacher</th>
+                <th style="width: 35%;min-width: 35%; max-width: 35%;">Shazzad Hossain Mazumder</th>
+              </tr>
+              <tr>
+                <th>Designation</th>
+                <td>Lecturer</td>
+              </tr>
+              <tr>
+                <th>Department</th>
+                <td>Department of CSE</td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td>shmazumder@feniuniversity.ac.bd</td>
+              </tr>
+              <!-- <tr class="text-center">
+                <th colspan="4">Feni University</th>
+              </tr> -->
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-responsive bg-transparent">
+          <table class="bottom-0 left-0 right-0 w-100 table-bordered bg-transparent">
+            <thead>
+              <tr class="text-center">
+                <th colspan="2">Submitted By</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th style="width: 15%;min-width: 15%; max-width: 15%;">Name</th>
+                <th style="width: 35%;min-width: 35%; max-width: 35%;">S.h. Mazumder</th>
+              </tr>
+              <tr>
+                <th>ID</th>
+                <td>13701023</td>
+              </tr>
+              <tr>
+                <th>Batch</th>
+                <td>48</td>
+              </tr>
+              <tr>
+                <th>Department</th>
+                <td>Department of CSE</td>
+              </tr>
+
+              <tr>
+                <th colspan="1">Date of Submission</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3 class="text-center" style=" font-weight:bold">Feni University</h3>
+          <h6 class="text-center" style=" font-weight:normal">Feni - 3900. Bangladesh</h6>
+        </div>
+      </div>
     </div>
   </div>
 
