@@ -1,46 +1,129 @@
 document.addEventListener('DOMContentLoaded', function () {
     window.jsPDF = window.jspdf.jsPDF;
 
-    // The toggle state
-    const assignmentRadio = document.getElementsByName('toggle');
-    assignmentRadio[0].checked = true;
+    // // The toggle state
+    // const assignmentRadio = document.getElementsByName('toggle');
+    // assignmentRadio[0].checked = true;
 
 
-    // Add event listeners to the toggle buttons
-    const toggleButtons = document.querySelectorAll('.toggle-container input[type="radio"]');
-    toggleButtons.forEach(button => {
-        button.addEventListener('change', toggleLabReportNo);
+    // // Add event listeners to the toggle buttons
+    // const toggleButtons = document.querySelectorAll('.toggle-container input[type="radio"]');
+    // toggleButtons.forEach(button => {
+    //     button.addEventListener('change', toggleLabReportNo);
+    // });
+
+
+    // toggleButtons[0].dispatchEvent(new Event("change"));
+});
+
+// function toggleLabReportNo() {
+//     // const labReportNoContainer = document.getElementById('labReportNoContainer');
+//     // const labDateContainer = document.getElementById('labDateContainer');
+//     // console.log(this);
+
+//     const labReportNoLabel = document.getElementById('labReportNoLabel');
+//     const labReportNoInput = document.getElementById('labReportNoInput');
+
+//     const topicLabel = document.getElementById('topicLabel');
+//     const topicInput = document.getElementById('topic');
+
+//     const assignmentChecked = this.value;
+
+//     // labReportNoContainer.style.display = assignmentChecked == 'Assignment' ? 'block' : 'block';
+//     // labDateContainer.style.display = assignmentChecked == 'Assignment' ? 'block' : 'block';
+
+//     labReportNoLabel.textContent = assignmentChecked == 'Assignment' ? 'Assignment No. ' : 'Lab Experiment No. ';
+//     labReportNoInput.placeholder = assignmentChecked == 'Assignment' ? 'Enter Assignment No' : 'Enter Experiement No:';
+//     topicLabel.textContent = assignmentChecked == 'Assignment' ? 'Topic:' : 'Lab Experiment Name:';
+//     topicInput.placeholder = assignmentChecked == 'Assignment' ? 'Enter Topic' : 'Enter Lab Experiment Name';
+// }
+
+// $(document).ready(function(){
+//     // batch
+//     let batch = $('[name="batch"]');
+//     let start = 2012;
+//     let batchNo = 0;
+//     for (let index = start; index < 2022; index++) {
+//         const element = array[index];
+//         for (let batchIndex = 0; batchIndex < 3; batchIndex++) {
+//             ++batchNo;
+
+//             let option = $('<option>').val(batchIndex).html(`${batchIndex}`);
+//             batch.append(option);
+            
+//         }
+        
+//     }
+
+// });
+
+function pdf_download(e){
+    var HTML_Width = $("#coverPageDisplay").width();
+    var HTML_Height = $("#coverPageDisplay").height();
+    var top_left_margin = 5;
+    var PDF_Width = HTML_Width + (top_left_margin * 2);
+    var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+    var canvas_image_width = HTML_Width;
+    var canvas_image_height = HTML_Height;
+
+    var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+    html2canvas($("#coverPageDisplay")[0], {
+        scale:3
+    }).then(function (canvas) {
+        var imgData = canvas.toDataURL("image/jpeg", 0.95);
+        var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+        pdf.addImage(imgData, 'JPEG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+        for (var i = 1; i <= totalPDFPages; i++) { 
+            pdf.addPage(PDF_Width, PDF_Height);
+            pdf.addImage(imgData, 'JPEG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+        }
+
+
+        let type = $('[name="coverPageType"]').val();
+        let courseCode = $('[name="courseCode"]').val();
+        let student_id = $('[name="student_id"]').val();
+        let labReportNo = $('[name="labReportNo"]').val();
+
+
+        pdf.save(`${student_id}_${courseCode}_${type}_${labReportNo}`+".pdf");
+        $("#coverPageDisplay").hide();
+    });
+};
+
+$(document).on('input', '#pdf-form input,select', function(e){
+    refreshCoverPage();
+});
+
+function refreshCoverPage(){
+    const data = Object.fromEntries(new FormData(document.querySelector('form')).entries());
+
+    console.log(data);
+
+    // let coverPageDisplay = $('#coverPageDisplay');
+    let coverPageDisplay = $('body');
+
+    let keys = Object.keys(data);
+    $.each(keys, function(i, aKey){
+
+        $(`.${aKey}`, coverPageDisplay).html(data[aKey]);
     });
 
 
-    toggleButtons[0].dispatchEvent(new Event("change"));
-});
+    var teacher_faculty=$('#teacher_department :selected').parent().attr('label');
+    $('.teacher_faculty').html(teacher_faculty);
 
-function toggleLabReportNo() {
-    // const labReportNoContainer = document.getElementById('labReportNoContainer');
-    // const labDateContainer = document.getElementById('labDateContainer');
-    // console.log(this);
-
-    const labReportNoLabel = document.getElementById('labReportNoLabel');
-    const labReportNoInput = document.getElementById('labReportNoInput');
-
-    const topicLabel = document.getElementById('topicLabel');
-    const topicInput = document.getElementById('topic');
-
-    const assignmentChecked = this.value;
-
-    // labReportNoContainer.style.display = assignmentChecked == 'Assignment' ? 'block' : 'block';
-    // labDateContainer.style.display = assignmentChecked == 'Assignment' ? 'block' : 'block';
-
-    labReportNoLabel.textContent = assignmentChecked == 'Assignment' ? 'Assignment No. ' : 'Lab Experiment No. ';
-    labReportNoInput.placeholder = assignmentChecked == 'Assignment' ? 'Enter Assignment No' : 'Enter Experiement No:';
-    topicLabel.textContent = assignmentChecked == 'Assignment' ? 'Topic:' : 'Lab Experiment Name:';
-    topicInput.placeholder = assignmentChecked == 'Assignment' ? 'Enter Topic' : 'Enter Lab Experiment Name';
 }
+
+$(document).ready(function(){
+    $('[name="coverPageType"]').trigger('input');
+
+});
 
 document.getElementById('pdf-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    generatePDF();
+    pdf_download();
+    // generatePDF();
 });
 
 function generatePDF() {

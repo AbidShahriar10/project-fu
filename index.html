@@ -43,6 +43,16 @@
     th {
       padding: 5px;
     }
+
+    table{
+      border: 1px solid black;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   </style>
 </head>
 
@@ -51,7 +61,7 @@
 
     <div class="bg-white col-12 col-lg-5">
       <form class="" id="pdf-form">
-        <div class="px-5 py-3">
+        <div class="px-5 py-3 w-100">
 
           <div class="text-center d-flex justify-content-center">
             <div>
@@ -61,7 +71,8 @@
               <h1 class="my-0 py-0 text-start text-uppercase" style="color:black; font-weight: bold;;">Feni University
               </h1>
 
-              <p class="text-start " style="font-style: italic;">Center for Learning & Development</p>
+              <p class="text-start " style="font-style: italic; font-family: monospace; letter-spacing: 1.5px;">Center for
+                Learning & Development</p>
             </div>
           </div>
 
@@ -70,9 +81,9 @@
           <hr>
 
           <div class="toggle-container text-center">
-            <input type="radio" id="assignment" name="toggle" value="Assignment" checked />
+            <input type="radio" id="assignment" name="coverPageType" value="Assignment" checked />
             <label for="assignment">Assignment</label>
-            <input type="radio" id="labReport" name="toggle" value="Lab Report" />
+            <input type="radio" id="labReport" name="coverPageType" value="Lab Report" />
             <label for="labReport">Lab Report</label>
             <div class="slider"></div>
           </div>
@@ -158,38 +169,92 @@
           </div>
 
           <div class="form-group mb-2">
+            <label for="batch">Batch:</label>
+            <select id="batch" name="batch" placeholder="Ex: 1st" class="form-control form-control-sm" required>
+              <option value="" disabled selected>Choose...</option>
+
+              <optgroup label="Bi-Semester">
+                <option value="33rd">33rd</option>
+                <option value="32nd">32nd</option>
+                <option value="31st">31st</option>
+                <option value="30th">30th</option>
+              </optgroup>
+
+              <optgroup label="Tri-Semester">
+                <option value="29th">29th</option>
+                <option value="28th">28th</option>
+                <option value="27th">27th</option>
+                <option value="26th">26th</option>
+                <option value="25th">25th</option>
+                <option value="24th">24th</option>
+                <option value="23rd">23rd</option>
+                <option value="22nd">22nd</option>
+                <option value="21st">21st</option>
+                <option value="20th">20th</option>
+                <option value="19th">19th</option>
+                <option value="18th">18th</option>
+                <option value="17th">17th</option>
+                <option value="16th">16th</option>
+                <option value="15th">15th</option>
+                <option value="14th">14th</option>
+                <option value="13th">13th</option>
+                <option value="12th">12th</option>
+                <option value="11th">11th</option>
+                <option value="10th">10th</option>
+                <option value="9th">9th</option>
+                <option value="8th">8th</option>
+                <option value="7th">7th</option>
+                <option value="6th">6th</option>
+                <option value="5th">5th</option>
+                <option value="4th">4th</option>
+                <option value="3rd">3rd</option>
+                <option value="2nd">2nd</option>
+                <option value="1st">1st</option>
+              </optgroup>
+
+            </select>
+
+          </div>
+
+          <div class="form-group mb-2">
             <label for="section">Section:</label>
-            <input list="sections" id="section" name="section"
+            <select list="sections" id="section" name="section"
               placeholder="Ex: UG for Undergraduate or DH for Diploma Holder" class="form-control form-control-sm"
-              required />
-            <datalist id="sections">
-              <option value="UG"></option>
-              <option value="DH"></option>
-            </datalist>
+              required>
+
+              <option value="" disabled selected>Choose...</option>
+
+              <option value="UG">UG</option>
+              <option value="DH">DH</option>
+            </select>
+
+
+
           </div>
 
 
           <div class="form-group mb-2">
             <label for="courseTitle">Course Title:</label>
-            <input type="text" name="courseTitle" placeholder="Enter your Course Title" id="courseTitle"
+            <input maxlength="127" type="text" name="courseTitle" placeholder="Enter your Course Title" id="courseTitle"
               class="form-control form-control-sm" required />
           </div>
 
           <div class="form-group mb-2">
             <label for="courseCode">Course Code:</label>
-            <input type="text" name="courseCode" placeholder="Enter your Course Code" id="courseCode"
+            <input maxlength="15" type="text" name="courseCode" placeholder="Enter your Course Code" id="courseCode"
               class="form-control form-control-sm" required />
           </div>
 
           <div class="form-group mb-2">
-            <label id="labReportNoLabel" for="labReportNoLabel">Lab Report No:</label>
-            <input type="text" id="labReportNoInput" name="labReportNo" class="form-control form-control-sm" />
+            <label id="labReportNoLabel" for="labReportNoLabel"><span class="coverPageType"></span> No:</label>
+            <input type="number" step="1" min="1" id="labReportNoInput" name="labReportNo"
+              class="form-control form-control-sm" />
           </div>
 
           <div class="form-group mb-2">
-            <label for="topic" id="topicLabel">Topic:</label>
-            <input type="text" id="topic" name="topic" placeholder="Enter Topic" class="form-control form-control-sm"
-              required />
+            <label for="topic" id="topicLabel"><span class="coverPageType"></span> Topic Name:</label>
+            <input maxlength="127" type="text" id="topic" name="topic" placeholder=""
+              class="form-control form-control-sm" required />
           </div>
 
           <!-- <div class="form-group mb-2" id="labDateContainer" style="display: none">
@@ -197,40 +262,50 @@
           <input type="date" id="labDate" name="labDate" class="form-control form-control-sm" />
           </div> -->
 
-          <div class="h4">
-            Submitted By
+          <div class="h4 mt-3">
+            Prepared by
           </div>
           <div class="form-group mb-2">
             <label for="name">Student Name:</label>
-            <input type="text" placeholder="Enter your name" id="name" name="name" class="form-control form-control-sm"
-              required />
+            <input maxlength="127" type="text" placeholder="Enter your name" id="student_name" name="student_name"
+              class="form-control form-control-sm" required />
 
           </div>
           <div class="form-group mb-2">
             <label for="id">Student ID:</label>
-            <input type="text" placeholder="Enter your ID" id="id" name="id" class="form-control form-control-sm"
-              required />
+            <input maxlength="9" type="text" placeholder="Enter your ID" id="student_id" name="student_id"
+              class="form-control form-control-sm" required />
 
           </div>
           <div class="form-group mb-2">
             <label for="date">Submission Date:</label>
-            <input type="date" id="date" name="date" required class="form-control form-control-sm" />
+            <input type="date" id="submission_date" name="submission_date" required class="form-control form-control-sm" />
           </div>
 
-          <div class="h4">
-            Submitted To
+          <div class="h4 mt-3">
+            Prepared for
           </div>
 
           <div class="form-group mb-2">
             <label for="teacher">Teacher's Name:</label>
-            <input type="text" placeholder="Enter your Course Teacher Name" id="teacher" name="teacher"
+            <input maxlength="127" type="text" placeholder="Enter your Course Teacher Name" id="teacher" name="teacher"
               class="form-control form-control-sm" required />
           </div>
 
           <div class="form-group mb-2">
             <label for="designation">Designation:</label>
-            <input type="text" placeholder="Enter your Course Teacher Name" id="teacher" name="teacher"
-              class="form-control form-control-sm" required />
+            <!-- <input maxlength="63" type="text" placeholder="Enter your Course Teacher Name" id="teacher_designation"
+              name="teacher_designation" class="form-control form-control-sm" required /> -->
+
+            <select name="teacher_designation" id="teacher_designation" class="form-control form-control-sm">
+              <option value="" disabled selected>Choose</option>
+
+              <option value="Professor">Professor</option>
+              <option value="Associate Professor">Associate Professor</option>
+              <option value="Assistant Professor">Assistant Professor</option>
+              <option value="Lecturer">Lecturer</option>
+              <option value="Lab Technical Officer">Lab Technical Officer</option>
+            </select>
           </div>
 
           <div class="form-group mb-2">
@@ -256,15 +331,16 @@
           </div>
 
           <div class="button-container">
-            <button type="submit">Generate PDF</button>
-            <button type="reset" class="button_right button_color">Reset</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+            <div class="mx-2"></div>
+            <button type="submit" class="btn btn-success">Generate PDF</button>
           </div>
         </div>
       </form>
     </div>
 
-    <div class="bg-white col-12 col-lg-6 bg-white">
-      <div style="width: 210mm; height: 297mm; border: 1px solid red; padding: 5mm 12mm;"
+    <div class="bg-white col-12 col-lg-6 bg-white pt-5">
+      <div id="coverPageDisplay" style="width: 209mm; height: 290mm; border: 1px solid red; padding: 5mm 12mm;"
         class="watermark d-flex justify-content-between flex-column">
 
         <div class="text-center d-flex justify-content-center">
@@ -275,7 +351,8 @@
             <h1 class="my-0 py-0 text-start text-uppercase" style="color:black; font-weight: bold;;">Feni University
             </h1>
 
-            <p class="text-start " style="font-style: italic;">Center for Learning & Development</p>
+            <p class="text-start " style="font-style: italic; font-family: monospace; letter-spacing: 1.5px;">Center for
+              Learning & Development</p>
           </div>
         </div>
 
@@ -284,61 +361,57 @@
 
         <div class="text-2xl text-center">
           <h1 class="text-3xl font-bold my-5"></h1>
-          <h2 class="mb-2"><span class="text-blue-900">Assignment No:</span> <span
-              class="assignment_no ml-2">#####</span>
+          <h2 class="mb-2" style="font-size: 22px;"><span class="text-blue-900 coverPageType">Assignment</span> No:
+            <span class="labReportNo ml-2" style="font-weight: bold"></span>
           </h2>
-          <h2><span>Topic:</span> <span class="topic ml-2">#####</span></h2>
+          <h2><span></span> <span class="topic" style="font-size: 32px; font-weight: bold"></span></h2>
         </div>
 
         <div class="table-responsive bg-transparent">
           <table class="bottom-0 left-0 right-0 w-100 table-bordered bg-transparent">
             <tbody>
               <tr>
-                <td style="width: 25%;min-width: 25%; max-width: 25%;">Course Title</td>
-                <td class="text-center" style="width: 5%;min-width: 5%; max-width: 5%;">:</td>
-                <td></td>
+                <th style="width: 15%;min-width: 15%; max-width: 15%;">Course Title</th>
+                <!-- <td class="text-center" style="width: 5%;min-width: 5%; max-width: 5%;">:</td> -->
+                <td class="courseTitle" style="width: 35%;min-width: 35%; max-width: 35%;"></td>
               </tr>
               <tr>
-                <td style="width: 25%;min-width: 25%; max-width: 25%;">Course Code</td>
-                <td class="text-center" style="width: 5%;min-width: 5%; max-width: 5%;">:</td>
-                <td></td>
+                <th style="width: 15%;min-width: 15%; max-width: 15%;">Course Code</th>
+                <!-- <td class="text-center" style="width: 5%;min-width: 5%; max-width: 5%;">:</td> -->
+                <td class="courseCode" style="width: 35%;min-width: 35%; max-width: 35%;"></td>
               </tr>
             </tbody>
           </table>
         </div>
 
-
-
-
-
-
         <div class="table-responsive bg-transparent">
           <table class="bottom-0 left-0 right-0 w-100 table-bordered bg-transparent">
             <thead>
               <tr class="text-center">
-                <th colspan="2">Submitted To</th>
+                <th colspan="2">Prepared for</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th style="width: 15%;min-width: 15%; max-width: 15%;">Teacher</th>
-                <th style="width: 35%;min-width: 35%; max-width: 35%;">Shazzad Hossain Mazumder</th>
+                <th style="width: 35%;min-width: 35%; max-width: 35%;" class="teacher"></th>
               </tr>
               <tr>
                 <th>Designation</th>
-                <td>Lecturer</td>
+                <td class="teacher_designation"></td>
               </tr>
               <tr>
                 <th>Department</th>
-                <td>Department of CSE</td>
+                <td class="teacher_department"></td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <th>Email</th>
-                <td>shmazumder@feniuniversity.ac.bd</td>
-              </tr>
-              <!-- <tr class="text-center">
-                <th colspan="4">Feni University</th>
+                <td class="teacher_email"></td>
               </tr> -->
+              <tr>
+                <th>Faculty</th>
+                <td class="teacher_faculty"></td>
+              </tr>
 
             </tbody>
           </table>
@@ -348,43 +421,62 @@
           <table class="bottom-0 left-0 right-0 w-100 table-bordered bg-transparent">
             <thead>
               <tr class="text-center">
-                <th colspan="2">Submitted By</th>
+                <th colspan="2">Prepared by</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th style="width: 15%;min-width: 15%; max-width: 15%;">Name</th>
-                <th style="width: 35%;min-width: 35%; max-width: 35%;">S.h. Mazumder</th>
+                <th style="width: 35%;min-width: 35%; max-width: 35%;" class="student_name"></th>
               </tr>
               <tr>
                 <th>ID</th>
-                <td>13701023</td>
+                <td class="student_id"></td>
+              </tr>
+              <tr>
+                <th>Term</th>
+                <td><span class="term"></span></td>
+              </tr>
+              <tr>
+                <th>Semester</th>
+                <td><span class="semester"></span></td>
               </tr>
               <tr>
                 <th>Batch</th>
-                <td>48</td>
+                <td><span class="batch"></span> (<span class="section"></span>)</td>
               </tr>
               <tr>
                 <th>Department</th>
-                <td>Department of CSE</td>
+                <td class="department"></td>
               </tr>
 
               <tr>
                 <th colspan="1">Date of Submission</th>
+                <td class="submission_date"></td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div>
+
+        <div class="pb-4">
+
+        </div>
+        <!-- <div>
           <h3 class="text-center" style=" font-weight:bold">Feni University</h3>
           <h6 class="text-center" style=" font-weight:normal">Feni - 3900. Bangladesh</h6>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script> -->
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
   <script src="script.js"></script>
 </body>
 
