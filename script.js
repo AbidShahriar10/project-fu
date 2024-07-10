@@ -61,6 +61,18 @@ $(document).ready(function () {
 
 });
 
+$(document).on('input', '[name="term"]', function(){
+    let label = $(`:selected`, this).parent().attr('label');
+    console.log(label);
+
+    $('[name="semester"]').find(`optgroup`).hide();
+    $('[name="semester"]').find(`optgroup[label="${label}"]`).show();
+
+    $('[name="batch"]').find(`optgroup`).hide();
+    $('[name="batch"]').find(`optgroup[label="${label}"]`).show();
+
+});
+
 function pdf_download(e) {
     var HTML_Width = $("#coverPageDisplay").width();
     var HTML_Height = $("#coverPageDisplay").height();
