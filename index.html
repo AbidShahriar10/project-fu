@@ -44,14 +44,54 @@
       padding: 5px;
     }
 
-    table{
+    table {
       border: 1px solid black;
+    }
+
+    table thead{
+      background-color: bisque;
+      color: black;
     }
 
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       margin: 0;
+    }
+
+    input[type=text] {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    input[type=number] {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    #coverPageDisplay {
+      width: 793.7008px;
+      height: 1122.5197px;
+      /* border: 1px solid black;  */
+      padding: 1px 0;
+    }
+
+    #coverPageDisplay::before {
+      content: '';
+      border: 10px solid transparent;
+      padding: 15px;
+      border-image: url(https://www.w3schools.com/cssref/border.png) 30 round;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+
+    #coverPageDisplay>div {
+      padding: 0 35px;
+    }
+
+    .topic{
+      color: #f38120;
     }
   </style>
 </head>
@@ -71,7 +111,8 @@
               <h1 class="my-0 py-0 text-start text-uppercase" style="color:black; font-weight: bold;;">Feni University
               </h1>
 
-              <p class="text-start " style="font-style: italic; font-family: monospace; letter-spacing: 1.5px;">Center for
+              <p class="text-start " style="font-style: italic; font-family: monospace; letter-spacing: 1.5px;">Center
+                for
                 Learning & Development</p>
             </div>
           </div>
@@ -89,8 +130,59 @@
           </div>
 
           <div class="form-group mb-2">
-            <label for="department">Department:</label>
-            <select id="department" name="department" class="form-control form-control-sm" required>
+            <label id="labReportNoLabel" for="labReportNoLabel"><span class="coverPageType"></span> No:</label>
+            <input type="number" step="1" min="1" id="labReportNoInput" name="labReportNo"
+              class="form-control form-control-sm" />
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="topic" id="topicLabel"><span class="coverPageType"></span> Topic Name:</label>
+            <input maxlength="127" type="text" id="topic" name="topic" placeholder=""
+              class="form-control form-control-sm" required />
+          </div>
+
+
+          <div class="form-group mb-2">
+            <label for="courseTitle">Course Title:</label>
+            <input maxlength="127" type="text" name="courseTitle" placeholder="Enter your Course Title" id="courseTitle"
+              class="form-control form-control-sm" required />
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="courseCode">Course Code:</label>
+            <input maxlength="15" type="text" name="courseCode" placeholder="Enter your Course Code" id="courseCode"
+              class="form-control form-control-sm" required />
+          </div>
+
+          <div class="h4 mt-4" style="font-weight: bold;">
+            Prepared for
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="teacher">Teacher's Name:</label>
+            <input maxlength="127" type="text" placeholder="Enter your Course Teacher Name" id="teacher" name="teacher"
+              class="form-control form-control-sm" required />
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="designation">Teacher's Designation:</label>
+            <!-- <input maxlength="63" type="text" placeholder="Enter your Course Teacher Name" id="teacher_designation"
+              name="teacher_designation" class="form-control form-control-sm" required /> -->
+
+            <select name="teacher_designation" id="teacher_designation" class="form-control form-control-sm">
+              <option value="" disabled selected>Choose</option>
+
+              <option value="Professor">Professor</option>
+              <option value="Associate Professor">Associate Professor</option>
+              <option value="Assistant Professor">Assistant Professor</option>
+              <option value="Lecturer">Lecturer</option>
+              <option value="Lab Technical Officer">Lab Technical Officer</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="teacher_department">Teacher's Department:</label>
+            <select id="teacher_department" name="teacher_department" class="form-control form-control-sm" required>
               <option value="" disabled selected>Choose your department</option>
               <optgroup label="Faculty of Science & Engineering">
                 <option value="CSE">CSE</option>
@@ -107,9 +199,26 @@
                 <option value="EEE">EEE</option>
                 <option value="Civil">Civil</option>
               </optgroup>
-
             </select>
           </div>
+
+          <div class="h4 mt-4" style="font-weight: bold;">
+            Prepared by
+          </div>
+          <div class="form-group mb-2">
+            <label for="name">Student Name:</label>
+            <input maxlength="127" type="text" placeholder="Enter your name" id="student_name" name="student_name"
+              class="form-control form-control-sm" required />
+
+          </div>
+          <div class="form-group mb-2">
+            <label for="id">Student ID:</label>
+            <input maxlength="9" type="text" placeholder="Enter your ID" id="student_id" name="student_id"
+              class="form-control form-control-sm" required />
+
+          </div>
+
+
 
           <div class="form-group mb-2">
             <label for="term">Term:</label>
@@ -129,6 +238,11 @@
 
             </select>
           </div>
+
+
+
+
+
 
 
           <div class="form-group mb-2">
@@ -168,9 +282,14 @@
 
           </div>
 
+
+
+
+
           <div class="form-group mb-2">
             <label for="batch">Batch:</label>
-            <select id="batch" name="batch" placeholder="Ex: 1st" class="form-control form-control-sm" required>
+            <input type="text" name="batch" class="form-control form-control-sm" maxlength="2">
+            <!-- <select id="batch" name="batch" placeholder="Ex: 1st" class="form-control form-control-sm" required>
               <option value="" disabled selected>Choose...</option>
 
               <optgroup label="Bi-Semester">
@@ -212,7 +331,7 @@
                 <option value="1st">1st</option>
               </optgroup>
 
-            </select>
+            </select> -->
 
           </div>
 
@@ -224,111 +343,49 @@
 
               <option value="" disabled selected>Choose...</option>
 
-              <option value="UG">UG</option>
-              <option value="DH">DH</option>
+              <option value="(UG)">UG</option>
+              <option value="(DH)">DH</option>
             </select>
-
-
-
-          </div>
-
-
-          <div class="form-group mb-2">
-            <label for="courseTitle">Course Title:</label>
-            <input maxlength="127" type="text" name="courseTitle" placeholder="Enter your Course Title" id="courseTitle"
-              class="form-control form-control-sm" required />
           </div>
 
           <div class="form-group mb-2">
-            <label for="courseCode">Course Code:</label>
-            <input maxlength="15" type="text" name="courseCode" placeholder="Enter your Course Code" id="courseCode"
-              class="form-control form-control-sm" required />
+            <label for="department">Your Department:</label>
+            <select id="department" name="department" class="form-control form-control-sm" required>
+              <option value="" disabled>Choose your department</option>
+              <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE" selected>CSE</option>
+                <!-- <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option> -->
+              </optgroup>
+              <!-- <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+              </optgroup>
+              <optgroup label="Faculty of Science & Engineering">
+                <option value="CSE">CSE</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+              </optgroup> -->
+
+            </select>
           </div>
 
           <div class="form-group mb-2">
-            <label id="labReportNoLabel" for="labReportNoLabel"><span class="coverPageType"></span> No:</label>
-            <input type="number" step="1" min="1" id="labReportNoInput" name="labReportNo"
+            <label for="date">Submission Date:</label>
+            <input type="date" id="submission_date" name="submission_date" required
               class="form-control form-control-sm" />
           </div>
 
-          <div class="form-group mb-2">
-            <label for="topic" id="topicLabel"><span class="coverPageType"></span> Topic Name:</label>
-            <input maxlength="127" type="text" id="topic" name="topic" placeholder=""
-              class="form-control form-control-sm" required />
-          </div>
+
 
           <!-- <div class="form-group mb-2" id="labDateContainer" style="display: none">
           <label for="labDate">Lab Date:</label>
           <input type="date" id="labDate" name="labDate" class="form-control form-control-sm" />
           </div> -->
 
-          <div class="h4 mt-3">
-            Prepared by
-          </div>
-          <div class="form-group mb-2">
-            <label for="name">Student Name:</label>
-            <input maxlength="127" type="text" placeholder="Enter your name" id="student_name" name="student_name"
-              class="form-control form-control-sm" required />
 
-          </div>
-          <div class="form-group mb-2">
-            <label for="id">Student ID:</label>
-            <input maxlength="9" type="text" placeholder="Enter your ID" id="student_id" name="student_id"
-              class="form-control form-control-sm" required />
 
-          </div>
-          <div class="form-group mb-2">
-            <label for="date">Submission Date:</label>
-            <input type="date" id="submission_date" name="submission_date" required class="form-control form-control-sm" />
-          </div>
-
-          <div class="h4 mt-3">
-            Prepared for
-          </div>
-
-          <div class="form-group mb-2">
-            <label for="teacher">Teacher's Name:</label>
-            <input maxlength="127" type="text" placeholder="Enter your Course Teacher Name" id="teacher" name="teacher"
-              class="form-control form-control-sm" required />
-          </div>
-
-          <div class="form-group mb-2">
-            <label for="designation">Designation:</label>
-            <!-- <input maxlength="63" type="text" placeholder="Enter your Course Teacher Name" id="teacher_designation"
-              name="teacher_designation" class="form-control form-control-sm" required /> -->
-
-            <select name="teacher_designation" id="teacher_designation" class="form-control form-control-sm">
-              <option value="" disabled selected>Choose</option>
-
-              <option value="Professor">Professor</option>
-              <option value="Associate Professor">Associate Professor</option>
-              <option value="Assistant Professor">Assistant Professor</option>
-              <option value="Lecturer">Lecturer</option>
-              <option value="Lab Technical Officer">Lab Technical Officer</option>
-            </select>
-          </div>
-
-          <div class="form-group mb-2">
-            <label for="teacher_department">Department:</label>
-            <select id="teacher_department" name="teacher_department" class="form-control form-control-sm" required>
-              <option value="" disabled selected>Choose your department</option>
-              <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
-              </optgroup>
-              <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
-              </optgroup>
-              <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
-              </optgroup>
-            </select>
-          </div>
 
           <div class="button-container">
             <button type="reset" class="btn btn-danger">Reset</button>
@@ -339,11 +396,12 @@
       </form>
     </div>
 
-    <div class="bg-white col-12 col-lg-6 bg-white pt-5">
-      <div id="coverPageDisplay" style="width: 209mm; height: 290mm; border: 1px solid red; padding: 5mm 12mm;"
-        class="watermark d-flex justify-content-between flex-column">
 
-        <div class="text-center d-flex justify-content-center">
+
+    <div class="bg-white col-12 col-lg-6 bg-white pt-5">
+      <div id="coverPageDisplay" class="watermark d-flex justify-content-between flex-column ">
+
+        <div class="text-center d-flex justify-content-center pt-5">
           <div>
             <img src="./image/fu.png" id="logo" alt="University Logo" class="logo" />
           </div>
@@ -443,7 +501,7 @@
               </tr>
               <tr>
                 <th>Batch</th>
-                <td><span class="batch"></span> (<span class="section"></span>)</td>
+                <td><span class="batch"></span> <span class="section"></span></td>
               </tr>
               <tr>
                 <th>Department</th>
@@ -458,7 +516,7 @@
           </table>
         </div>
 
-        <div class="pb-4">
+        <div class="pb-3">
 
         </div>
         <!-- <div>
@@ -475,7 +533,7 @@
 
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+  <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
   <script src="script.js"></script>
 </body>
