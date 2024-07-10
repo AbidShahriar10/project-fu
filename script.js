@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    window.jsPDF = window.jspdf.jsPDF;
+    // window.jsPDF = window.jspdf.jsPDF;
 
     // // The toggle state
     // const assignmentRadio = document.getElementsByName('toggle');
@@ -38,45 +38,49 @@ document.addEventListener('DOMContentLoaded', function () {
 //     topicInput.placeholder = assignmentChecked == 'Assignment' ? 'Enter Topic' : 'Enter Lab Experiment Name';
 // }
 
-// $(document).ready(function(){
-//     // batch
-//     let batch = $('[name="batch"]');
-//     let start = 2012;
-//     let batchNo = 0;
-//     for (let index = start; index < 2022; index++) {
-//         const element = array[index];
-//         for (let batchIndex = 0; batchIndex < 3; batchIndex++) {
-//             ++batchNo;
+$(document).ready(function () {
+    // batch
+    // let batch = $('[name="batch"]').empty();
+    // let start = 2023;
+    // let end = new Date(Date.now()).getFullYear();
+    // let batchNo = 30 + (end-start)*2;
+    
+    // let choose_option = $('<option>').val("").html(`Choose`).attr('disabled', true).prop('checked', true);
+    // batch.append(choose_option);
+    // for (let index = end; index >= start; index--) {
 
-//             let option = $('<option>').val(batchIndex).html(`${batchIndex}`);
-//             batch.append(option);
-            
-//         }
-        
-//     }
+    //     for (let batchIndex = 2; batchIndex >=1; batchIndex--) {
 
-// });
+    //         let option = $('<option>').val(batchIndex).html(`${batchNo - batchIndex}`);
+    //         batch.append(option);
+    //     }
 
-function pdf_download(e){
+    //     batchNo += 2;
+
+    // }
+
+});
+
+function pdf_download(e) {
     var HTML_Width = $("#coverPageDisplay").width();
     var HTML_Height = $("#coverPageDisplay").height();
-    var top_left_margin = 5;
+    var top_left_margin = 0;
     var PDF_Width = HTML_Width + (top_left_margin * 2);
-    var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+    var PDF_Height = (PDF_Width * (297/210)) + (top_left_margin * 2);
     var canvas_image_width = HTML_Width;
     var canvas_image_height = HTML_Height;
 
     var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
 
     html2canvas($("#coverPageDisplay")[0], {
-        scale:3
+        scale: 3
     }).then(function (canvas) {
         var imgData = canvas.toDataURL("image/jpeg", 0.95);
         var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
         pdf.addImage(imgData, 'JPEG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
-        for (var i = 1; i <= totalPDFPages; i++) { 
+        for (var i = 1; i <= totalPDFPages; i++) {
             pdf.addPage(PDF_Width, PDF_Height);
-            pdf.addImage(imgData, 'JPEG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+            pdf.addImage(imgData, 'JPEG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
         }
 
 
@@ -86,16 +90,16 @@ function pdf_download(e){
         let labReportNo = $('[name="labReportNo"]').val();
 
 
-        pdf.save(`${student_id}_${courseCode}_${type}_${labReportNo}`+".pdf");
+        pdf.save(`${student_id}_${courseCode}_${type}_${labReportNo}` + ".pdf");
         $("#coverPageDisplay").hide();
     });
 };
 
-$(document).on('input', '#pdf-form input,select', function(e){
+$(document).on('input', '#pdf-form input,select', function (e) {
     refreshCoverPage();
 });
 
-function refreshCoverPage(){
+function refreshCoverPage() {
     const data = Object.fromEntries(new FormData(document.querySelector('form')).entries());
 
     console.log(data);
@@ -104,18 +108,18 @@ function refreshCoverPage(){
     let coverPageDisplay = $('body');
 
     let keys = Object.keys(data);
-    $.each(keys, function(i, aKey){
+    $.each(keys, function (i, aKey) {
 
         $(`.${aKey}`, coverPageDisplay).html(data[aKey]);
     });
 
 
-    var teacher_faculty=$('#teacher_department :selected').parent().attr('label');
+    var teacher_faculty = $('#teacher_department :selected').parent().attr('label');
     $('.teacher_faculty').html(teacher_faculty);
 
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('[name="coverPageType"]').trigger('input');
 
 });
