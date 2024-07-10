@@ -44,7 +44,7 @@ $(document).ready(function () {
     // let start = 2023;
     // let end = new Date(Date.now()).getFullYear();
     // let batchNo = 30 + (end-start)*2;
-    
+
     // let choose_option = $('<option>').val("").html(`Choose`).attr('disabled', true).prop('checked', true);
     // batch.append(choose_option);
     // for (let index = end; index >= start; index--) {
@@ -61,7 +61,16 @@ $(document).ready(function () {
 
 });
 
-$(document).on('input', '[name="term"]', function(){
+$(window).bind('orientationchange', function (e) {
+    if ($.event.special.orientationchange.orientation() == "portrait") {
+        $(this).setAttribute("your selector", "height=device-height, initial-scale=1.0");
+    } else {
+        //Do Whatever in landscape mode
+        $(this).setAttribute("your selector", "width=device-width, initial-scale=1.0, maximum-scale=1.0");
+    }
+});
+
+$(document).on('input', '[name="term"]', function () {
     let label = $(`:selected`, this).parent().attr('label');
     console.log(label);
 
@@ -78,7 +87,7 @@ function pdf_download(e) {
     var HTML_Height = $("#coverPageDisplay").height();
     var top_left_margin = 0;
     var PDF_Width = HTML_Width + (top_left_margin * 2);
-    var PDF_Height = (PDF_Width * (297/210)) + (top_left_margin * 2);
+    var PDF_Height = (PDF_Width * (297 / 210)) + (top_left_margin * 2);
     var canvas_image_width = HTML_Width;
     var canvas_image_height = HTML_Height;
 
@@ -114,7 +123,7 @@ $(document).on('input', '#pdf-form input,select', function (e) {
 function refreshCoverPage() {
     const data = Object.fromEntries(new FormData(document.querySelector('form')).entries());
 
-    console.log(data);
+    // console.log(data);
 
     // let coverPageDisplay = $('#coverPageDisplay');
     let coverPageDisplay = $('body');
