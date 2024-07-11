@@ -132,7 +132,7 @@
           <div class="form-group mb-2">
             <label id="labReportNoLabel" for="labReportNoLabel"><span class="coverPageType"></span> No:</label>
             <input type="number" step="1" min="1" id="labReportNoInput" name="labReportNo"
-              class="form-control form-control-sm" />
+              class="form-control form-control-sm" required/>
           </div>
 
           <div class="form-group mb-2">
@@ -169,7 +169,7 @@
             <!-- <input maxlength="63" type="text" placeholder="Enter your Course Teacher Name" id="teacher_designation"
               name="teacher_designation" class="form-control form-control-sm" required /> -->
 
-            <select name="teacher_designation" id="teacher_designation" class="form-control form-control-sm">
+            <select name="teacher_designation" id="teacher_designation" class="form-control form-control-sm" required>
               <option value="" disabled selected>Choose</option>
 
               <option value="Professor">Professor</option>
@@ -185,20 +185,19 @@
             <select id="teacher_department" name="teacher_department" class="form-control form-control-sm" required>
               <option value="" disabled selected>Choose your department</option>
               <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
+                <option value="Computer Science & Engineering">CSE</option>
+                <option value="Electrical And Electronics Engineering">EEE</option>
+                <option value="Civil Engineering">CE</option>
+                <option value="Mathematics">Math</option>
               </optgroup>
-              <!-- <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
+              <optgroup label="Faculty of Arts, Law & Social Science">
+                <option value="English">English</option>
+                <option value="Law">Law</option>
+                <option value="Library and Information Science">LIS</option>
               </optgroup>
-              <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
-              </optgroup> -->
+              <optgroup label="Faculty of Business Administration">
+                <option value="Business Administration">BA</option>
+              </optgroup>
             </select>
           </div>
 
@@ -213,7 +212,7 @@
           </div>
           <div class="form-group mb-2">
             <label for="id">Student ID:</label>
-            <input maxlength="9" type="text" placeholder="Enter your ID" id="student_id" name="student_id"
+            <input minlength="9" maxlength="9" type="text" placeholder="Enter your ID" id="student_id" name="student_id"
               class="form-control form-control-sm" required />
 
           </div>
@@ -351,22 +350,21 @@
           <div class="form-group mb-2">
             <label for="department">Your Department:</label>
             <select id="department" name="department" class="form-control form-control-sm" required>
-              <option value="" disabled>Choose your department</option>
+              <option value="">Choose your department</option>
               <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE" selected>CSE</option>
-                <!-- <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option> -->
+                <option value="Computer Science & Engineering">CSE</option>
+                <option value="Electrical And Electronics Engineering">EEE</option>
+                <option value="Civil Engineering">CE</option>
+                <option value="Mathematics">Math</option>
               </optgroup>
-              <!-- <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
+              <optgroup label="Faculty of Arts, Law & Social Science">
+                <option value="English">English</option>
+                <option value="Law">Law</option>
+                <option value="Library and Information Science">LIS</option>
               </optgroup>
-              <optgroup label="Faculty of Science & Engineering">
-                <option value="CSE">CSE</option>
-                <option value="EEE">EEE</option>
-                <option value="Civil">Civil</option>
-              </optgroup> -->
+              <optgroup label="Faculty of Business Administration">
+                <option value="Business Administration">BA</option>
+              </optgroup>
 
             </select>
           </div>
@@ -526,7 +524,9 @@
       </div>
 
       <div class="text-center pt-5">
-        <a href="https://info.flagcounter.com/wOrU"><img src="https://s11.flagcounter.com/mini/wOrU/bg_FFFFFF/txt_000000/border_FFE433/flags_0/" alt="Flag Counter" border="0"></a>
+        <a href="https://info.flagcounter.com/wOrU"><img
+            src="https://s11.flagcounter.com/mini/wOrU/bg_FFFFFF/txt_000000/border_FFE433/flags_0/" alt="Flag Counter"
+            border="0"></a>
       </div>
     </div>
   </div>
