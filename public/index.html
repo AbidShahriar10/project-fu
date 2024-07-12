@@ -13,14 +13,9 @@
   <link rel="shortcut icon" href="./image/fu.png" type="image/x-icon">
 
   <style>
-    body {
-      /* height: 100vh;
-      width: 100vw; */
-    }
-
-    #logo {
-      width: 65px;
-    }
+    /* #logo {
+      width: 100px;
+    } */
   </style>
   <style>
     .watermark {
@@ -29,7 +24,7 @@
 
     .watermark::after {
       content: '';
-      background: url(./image/fu.png) center center no-repeat;
+      background: url(./image/cse.png) center center no-repeat;
       opacity: 0.05;
       width: 300px;
       height: 300px;
@@ -103,9 +98,9 @@
       <form class="" id="pdf-form">
         <div class="px-2 px-lg-5 py-3 w-100">
 
-          <div class="text-center d-flex justify-content-center">
+          <!-- <div class="text-center d-flex justify-content-center">
             <div>
-              <img src="./image/fu.png" id="logo" alt="University Logo" class="logo" />
+              <img src="./image/FU Logo.jpg" id="logo" alt="University Logo" class="logo" />
             </div>
             <div class="ms-2">
               <h1 class="my-0 py-0 text-start text-uppercase" style="color:black; font-weight: bold;;">Feni University
@@ -115,6 +110,11 @@
                 for
                 Learning & Development</p>
             </div>
+          </div> -->
+
+          <div class="mb-3 text-center">
+            <img src="./image/full.jpg" class="img-fluid" style="min-height: 70px; height: 6vw;" alt="University Logo" />
+
           </div>
 
           <h4 class="text-center">Cover Page Generator</h4>
@@ -183,14 +183,14 @@
           <div class="form-group mb-2">
             <label for="teacher_department">Teacher's Department:</label>
             <select id="teacher_department" name="teacher_department" class="form-control form-control-sm" required>
-              <option value="" disabled selected>Choose your department</option>
-              <optgroup label="Faculty of Science & Engineering">
-                <option value="Computer Science & Engineering">CSE</option>
-                <option value="Electrical And Electronics Engineering">EEE</option>
+              <option value="" disabled selected>Choose</option>
+              <optgroup label="Faculty of Science and Engineering">
+                <option value="Computer Science and Engineering">CSE</option>
+                <option value="Electrical and Electronics Engineering">EEE</option>
                 <option value="Civil Engineering">CE</option>
                 <option value="Mathematics">Math</option>
               </optgroup>
-              <optgroup label="Faculty of Arts, Law & Social Science">
+              <optgroup label="Faculty of Arts, Law and Social Science">
                 <option value="English">English</option>
                 <option value="Law">Law</option>
                 <option value="Library and Information Science">LIS</option>
@@ -217,79 +217,11 @@
 
           </div>
 
-
-
-          <div class="form-group mb-2">
-            <label for="term">Term:</label>
-            <select type="text" id="term" name="term" placeholder="Ex: Spring" class="form-control form-control-sm"
-              required>
-              <option value="" disabled selected>Choose...</option>
-              <optgroup label="Bi-Semester">
-                <option>Spring</option>
-                <option>Autumn</option>
-              </optgroup>
-              <optgroup label="Tri-Semester">
-                <option>Spring</option>
-                <option>Summer</option>
-                <option>Fall</option>
-              </optgroup>
-
-
-            </select>
-          </div>
-
-
-
-
-
-
-
-          <div class="form-group mb-2">
-            <label for="semester">Semester:</label>
-            <select list="semesters" id="semester" name="semester" placeholder="Ex: 1st"
-              class="form-control form-control-sm" required>
-              <option value="" disabled selected>Choose...</option>
-
-              <optgroup label="Bi-Semester">
-                <option value="1st">1st</option>
-                <option value="2nd">2nd</option>
-                <option value="3rd">3rd</option>
-                <option value="4th">4th</option>
-                <option value="5th">5th</option>
-                <option value="6th">6th</option>
-                <option value="7th">7th</option>
-                <option value="8th">8th</option>
-              </optgroup>
-
-              <optgroup label="Tri-Semester">
-                <option value="1st">1st</option>
-                <option value="2nd">2nd</option>
-                <option value="3rd">3rd</option>
-                <option value="4th">4th</option>
-                <option value="5th">5th</option>
-                <option value="6th">6th</option>
-                <option value="7th">7th</option>
-                <option value="8th">8th</option>
-                <option value="9th">9th</option>
-                <option value="10th">10th</option>
-                <option value="11th">11th</option>
-                <option value="12th">12th</option>
-              </optgroup>
-
-            </select>
-
-
-          </div>
-
-
-
-
-
           <div class="form-group mb-2">
             <label for="batch">Batch:</label>
             <!-- <input type="text" name="batch" class="form-control form-control-sm" maxlength="2"> -->
             <select id="batch" name="batch" placeholder="Ex: 1st" class="form-control form-control-sm" required>
-              <option value="" disabled selected>Choose...</option>
+              <option value="" disabled selected>Choose</option>
 
               <optgroup label="Bi-Semester">
                 <option value="33rd">33rd</option>
@@ -335,12 +267,80 @@
           </div>
 
           <div class="form-group mb-2">
+            <label for="term">Term:</label>
+            <select type="text" id="term" name="term" placeholder="Ex: Spring" class="form-control form-control-sm"
+              required>
+              <option value="" disabled selected>Choose</option>
+              <optgroup label="Bi-Semester">
+                <option>Spring</option>
+                <option>Autumn</option>
+              </optgroup>
+              <optgroup label="Tri-Semester">
+                <option>Spring</option>
+                <option>Summer</option>
+                <option>Fall</option>
+              </optgroup>
+
+
+            </select>
+          </div>
+
+
+
+
+
+
+
+          <div class="form-group mb-2">
+            <label for="semester">Semester:</label>
+            <select list="semesters" id="semester" name="semester" placeholder="Ex: 1st"
+              class="form-control form-control-sm" required>
+              <option value="" disabled selected>Choose</option>
+
+              <optgroup label="Bi-Semester">
+                <option value="1st">1st</option>
+                <option value="2nd">2nd</option>
+                <option value="3rd">3rd</option>
+                <option value="4th">4th</option>
+                <option value="5th">5th</option>
+                <option value="6th">6th</option>
+                <option value="7th">7th</option>
+                <option value="8th">8th</option>
+              </optgroup>
+
+              <optgroup label="Tri-Semester">
+                <option value="1st">1st</option>
+                <option value="2nd">2nd</option>
+                <option value="3rd">3rd</option>
+                <option value="4th">4th</option>
+                <option value="5th">5th</option>
+                <option value="6th">6th</option>
+                <option value="7th">7th</option>
+                <option value="8th">8th</option>
+                <option value="9th">9th</option>
+                <option value="10th">10th</option>
+                <option value="11th">11th</option>
+                <option value="12th">12th</option>
+              </optgroup>
+
+            </select>
+
+
+          </div>
+
+
+
+
+
+         
+
+          <div class="form-group mb-2">
             <label for="section">Section:</label>
             <select list="sections" id="section" name="section"
-              placeholder="Ex: UG for Undergraduate or DH for Diploma Holder" class="form-control form-control-sm"
+              class="form-control form-control-sm"
               required>
 
-              <option value="" disabled selected>Choose...</option>
+              <option value="" disabled selected>Choose</option>
 
               <option value="(UG)">Undergraduate</option>
               <option value="(DH)">Diploma</option>
@@ -351,7 +351,7 @@
           <div class="form-group mb-2">
             <label for="department">Your Department:</label>
             <select id="department" name="department" class="form-control form-control-sm" required>
-              <option value="">Choose your department</option>
+              <option value="">Choose</option>
               <optgroup label="Faculty of Science and Engineering">
                 <option value="Computer Science and Engineering">CSE</option>
                 <option value="Electrical and Electronics Engineering">EEE</option>
@@ -399,7 +399,7 @@
     <div class="bg-white col-12 col-lg-7 bg-white pt-5 table-responsive">
       <div id="coverPageDisplay" class="watermark d-flex justify-content-between flex-column mx-auto">
 
-        <div class="text-center d-flex justify-content-center pt-5">
+        <!-- <div class="text-center d-flex justify-content-center pt-5">
           <div>
             <img src="./image/fu.png" id="logo" alt="University Logo" class="logo" />
           </div>
@@ -410,13 +410,17 @@
             <p class="text-start " style="font-style: italic; font-family: monospace; letter-spacing: 1.5px;">Center for
               Learning & Development</p>
           </div>
+        </div> -->
+
+        <div class="mb-3 text-center pt-5">
+          <img src="./image/full.jpg" class="" style="height: 100px;" alt="University Logo" />
+
         </div>
 
 
 
 
         <div class="text-2xl text-center">
-          <h1 class="text-3xl font-bold my-5"></h1>
           <h2 class="mb-2" style="font-size: 22px;"><span class="text-blue-900 coverPageType">Assignment</span> No:
             <span class="labReportNo ml-2" style="font-weight: bold"></span>
           </h2>
@@ -490,6 +494,10 @@
                 <td class="student_id"></td>
               </tr>
               <tr>
+                <th>Batch</th>
+                <td><span class="batch"></span> <span class="section"></span></td>
+              </tr>
+              <tr>
                 <th>Term</th>
                 <td><span class="term"></span></td>
               </tr>
@@ -497,25 +505,27 @@
                 <th>Semester</th>
                 <td><span class="semester"></span></td>
               </tr>
-              <tr>
-                <th>Batch</th>
-                <td><span class="batch"></span> <span class="section"></span></td>
-              </tr>
+              
               <tr>
                 <th>Department</th>
                 <td class="department"></td>
               </tr>
 
-              <tr>
+              <!-- <tr>
                 <th colspan="1">Date of Submission</th>
                 <td class="submission_date"></td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         </div>
 
-        <div class="pb-3">
+        <div class="h5 text-center d-flex justify-content-center" style="font-weight: bold;">
+          <div>Date of Submission : &nbsp;</div>
+          <div class="submission_date text-start" style="min-width: 150px;"></div>
+        </div>
 
+        <div class="pb-3 text-end" style="font-size: 15px; font-family: monospace;">
+          generated from <a href="https://csefu2012.web.app/">csefu2012.web.app</a>
         </div>
         <!-- <div>
           <h3 class="text-center" style=" font-weight:bold">Feni University</h3>

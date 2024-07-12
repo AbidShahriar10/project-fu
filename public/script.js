@@ -38,6 +38,12 @@ document.addEventListener('DOMContentLoaded', function () {
 //     topicInput.placeholder = assignmentChecked == 'Assignment' ? 'Enter Topic' : 'Enter Lab Experiment Name';
 // }
 
+window.oncontextmenu = function ()
+{
+    // showCustomMenu();
+    return false;     // cancel default menu
+}
+
 $(document).ready(function () {
     // batch
     // let batch = $('[name="batch"]').empty();
