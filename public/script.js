@@ -78,15 +78,23 @@ $(window).bind('orientationchange', function (e) {
 
 $(document).on('input', '[name="term"]', function () {
     let label = $(`:selected`, this).parent().attr('label');
-    console.log(label);
+    console.log("Term", label);
 
-    $('[name="semester"]').find(`optgroup`).hide();
-    $('[name="semester"]').find(`optgroup[label="${label}"]`).show();
+    if(label)
+    {
+        $('[name="semester"]').find(`optgroup`).hide();
+        $('[name="semester"]').find(`optgroup[label="${label}"]`).show();
+    
+        $('[name="batch"]').find(`optgroup`).hide();
+        $('[name="batch"]').find(`optgroup[label="${label}"]`).show();
+    }
+    else{
+        $('[name="semester"]').find(`optgroup`).hide();
+        $('[name="batch"]').find(`optgroup`).hide();
 
-    $('[name="batch"]').find(`optgroup`).hide();
-    $('[name="batch"]').find(`optgroup[label="${label}"]`).show();
-
+    }
 });
+$('[name="term"]').trigger('input');
 
 function pdf_download(e) {
     var HTML_Width = $("#coverPageDisplay").width();
@@ -143,6 +151,9 @@ function refreshCoverPage() {
 
     var teacher_faculty = $('#teacher_department :selected').parent().attr('label');
     $('.teacher_faculty').html(teacher_faculty);
+
+    // var selected_department = $('[name="department"] :selected').data('logo');
+    // $('#coverPageDisplay').addClass(selected_department);
 
 }
 

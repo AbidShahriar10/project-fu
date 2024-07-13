@@ -13,10 +13,17 @@
   <link rel="shortcut icon" href="./image/fu.png" type="image/x-icon">
 
   <style>
-    /* #logo {
-      width: 100px;
-    } */
+    .cse::after {
+      background: url(./image/cse.png) center center no-repeat !important;
+
+    }
+
+    .eee::after {
+      background: url(./image/eee.png) center center no-repeat !important;
+
+    }
   </style>
+
   <style>
     .watermark {
       position: relative;
@@ -69,6 +76,9 @@
       height: 1122.5197px;
       /* border: 1px solid black;  */
       padding: 1px 0;
+
+      /* background-image: url(image/sim.png);
+      background-size: contain; */
     }
 
     #coverPageDisplay::before {
@@ -82,7 +92,7 @@
     }
 
     #coverPageDisplay>div {
-      padding: 0 35px;
+      padding: 0 120px;
     }
 
     .topic {
@@ -113,7 +123,8 @@
           </div> -->
 
           <div class="mb-3 text-center">
-            <img src="./image/full.jpg" class="img-fluid" style="min-height: 70px; height: 6vw;" alt="University Logo" />
+            <img src="./image/full.jpg" class="img-fluid" style="min-height: 70px; height: 6vw;"
+              alt="University Logo" />
 
           </div>
 
@@ -131,8 +142,8 @@
 
           <div class="form-group mb-2">
             <label id="labReportNoLabel" for="labReportNoInput"><span class="coverPageType"></span> No:</label>
-            <input type="number" step="1" min="1" id="labReportNoInput" name="labReportNo"
-              class="form-control form-control-sm" required/>
+            <input type="number" id="labReportNoInput" name="labReportNo" class="form-control form-control-sm"
+              required />
           </div>
 
           <div class="form-group mb-2">
@@ -217,10 +228,32 @@
 
           </div>
 
+
+
+          <div class="form-group mb-2">
+            <label for="term">Term:</label>
+            <select type="text" id="term" name="term" class="form-control form-control-sm" required>
+              <option value="">Choose</option>
+              <optgroup label="Bi-Semester">
+                <option>Spring</option>
+                <option>Autumn</option>
+              </optgroup>
+              <optgroup label="Tri-Semester">
+                <option>Spring</option>
+                <option>Summer</option>
+                <option>Fall</option>
+              </optgroup>
+
+
+            </select>
+          </div>
+
+
+
           <div class="form-group mb-2">
             <label for="batch">Batch:</label>
             <!-- <input type="text" name="batch" class="form-control form-control-sm" maxlength="2"> -->
-            <select id="batch" name="batch" placeholder="Ex: 1st" class="form-control form-control-sm" required>
+            <select id="batch" name="batch" class="form-control form-control-sm" required>
               <option value="" disabled selected>Choose</option>
 
               <optgroup label="Bi-Semester">
@@ -266,38 +299,14 @@
 
           </div>
 
-          <div class="form-group mb-2">
-            <label for="term">Term:</label>
-            <select type="text" id="term" name="term" placeholder="Ex: Spring" class="form-control form-control-sm"
-              required>
-              <option value="" disabled selected>Choose</option>
-              <optgroup label="Bi-Semester">
-                <option>Spring</option>
-                <option>Autumn</option>
-              </optgroup>
-              <optgroup label="Tri-Semester">
-                <option>Spring</option>
-                <option>Summer</option>
-                <option>Fall</option>
-              </optgroup>
-
-
-            </select>
-          </div>
-
-
-
-
-
 
 
           <div class="form-group mb-2">
             <label for="semester">Semester:</label>
-            <select list="semesters" id="semester" name="semester" placeholder="Ex: 1st"
-              class="form-control form-control-sm" required>
+            <select list="semesters" id="semester" name="semester" class="form-control form-control-sm" required>
               <option value="" disabled selected>Choose</option>
 
-              <optgroup label="Bi-Semester">
+              <optgroup label="Bi-Semester" style="display: none;">
                 <option value="1st">1st</option>
                 <option value="2nd">2nd</option>
                 <option value="3rd">3rd</option>
@@ -308,7 +317,7 @@
                 <option value="8th">8th</option>
               </optgroup>
 
-              <optgroup label="Tri-Semester">
+              <optgroup label="Tri-Semester" style="display: none;">
                 <option value="1st">1st</option>
                 <option value="2nd">2nd</option>
                 <option value="3rd">3rd</option>
@@ -332,13 +341,11 @@
 
 
 
-         
+
 
           <div class="form-group mb-2">
             <label for="section">Section:</label>
-            <select list="sections" id="section" name="section"
-              class="form-control form-control-sm"
-              required>
+            <select list="sections" id="section" name="section" class="form-control form-control-sm" required>
 
               <option value="" disabled selected>Choose</option>
 
@@ -353,7 +360,7 @@
             <select id="department" name="department" class="form-control form-control-sm" required>
               <option value="">Choose</option>
               <optgroup label="Faculty of Science and Engineering">
-                <option value="Computer Science and Engineering">CSE</option>
+                <option value="Computer Science and Engineering" data-logo="cse">CSE</option>
                 <!-- <option value="Electrical and Electronics Engineering">EEE</option>
                 <option value="Civil Engineering">CE</option>
                 <option value="Mathematics">Math</option> -->
@@ -453,7 +460,7 @@
             </thead>
             <tbody>
               <tr>
-                <th style="width: 15%;min-width: 15%; max-width: 15%;">Teacher</th>
+                <th style="width: 15%;min-width: 15%; max-width: 15%;">Name</th>
                 <th style="width: 35%;min-width: 35%; max-width: 35%;" class="teacher"></th>
               </tr>
               <tr>
@@ -464,10 +471,6 @@
                 <th>Department</th>
                 <td class="teacher_department"></td>
               </tr>
-              <!-- <tr>
-                <th>Email</th>
-                <td class="teacher_email"></td>
-              </tr> -->
               <tr>
                 <th>Faculty</th>
                 <td class="teacher_faculty"></td>
@@ -505,7 +508,7 @@
                 <th>Semester</th>
                 <td><span class="semester"></span></td>
               </tr>
-              
+
               <tr>
                 <th>Department</th>
                 <td class="department"></td>
@@ -520,23 +523,31 @@
         </div>
 
         <div class="h5 text-center d-flex justify-content-center" style="font-weight: bold;">
-          <div>Date of Submission : &nbsp;</div>
+          <div>Date of Submission: &nbsp;</div>
           <div class="submission_date text-start" style="min-width: 150px;"></div>
         </div>
 
-        <div class="pb-3 text-end" style="font-size: 15px; font-family: monospace;">
-          generated from <a href="https://csefu2012.web.app/">csefu2012.web.app</a>
+        <div class="pb-4 text-end" style="font-size: 15px; font-family: monospace; margin-right: -80px;">
+          generated from <span style="color: cornflowerblue;">csefu2012.web.app</span>
         </div>
-        <!-- <div>
-          <h3 class="text-center" style=" font-weight:bold">Feni University</h3>
-          <h6 class="text-center" style=" font-weight:normal">Feni - 3900. Bangladesh</h6>
-        </div> -->
+
       </div>
 
+      <div class="text-center pt-5">Created with ❤️ by <a href="facebook.com/abid.shahriar.73">Shahriar Zaman Abid</a> & <a href="facebook.com/mazumder.sh">Shazzad Hossain
+          Mazumder</a></div>
+      <div class="text-center">©️ All Rights Reserved by Dept. of CSE, Feni University</div>
+
+      <!-- <div class="text-center">
+        <iframe src="https://lottie.host/embed/241824e1-c83d-4b07-8c82-041007787878/AxtKd87gtx.json"></iframe>
+
+      </div> -->
+
       <div class="text-center pt-5">
-        <a href="https://info.flagcounter.com/wOrU"><img
-            src="https://s11.flagcounter.com/mini/wOrU/bg_FFFFFF/txt_000000/border_FFE433/flags_0/" alt="Flag Counter"></a>
+        <a href="https://info.flagcounter.com/wOrU">
+          <img src="https://s11.flagcounter.com/mini/wOrU/bg_FFFFFF/txt_000000/border_FFE433/flags_0/"
+            alt="Flag Counter"></a>
       </div>
+
     </div>
   </div>
 
